@@ -204,6 +204,16 @@ $keyboardzarinpal = json_encode([
     ],
     'resize_keyboard' => true
 ]);
+$keyboardsep = json_encode([
+    'keyboard' => [
+        [['text' => '📌 دامنه درگاه بانکی']],
+        [['text' => '💰 کش بک درگاه بانکی']],
+        [['text' => '📉 حداقل مبلغ درگاه بانکی'], ['text' => '📈 حداکثر مبلغ درگاه بانکی']],
+        [['text' => '📚 آموزش درگاه بانکی']],
+        [['text' => $textbotlang['Admin']['backAdminBtn']], ['text' => $textbotlang['Admin']['backMenuBtn']]]
+    ],
+    'resize_keyboard' => true
+]);
 $aqayepardakht = json_encode([
     'keyboard' => [
         [['text' => $textbotlang['keyboard']['setAqayePardakhtMerchant']], ['text' => $textbotlang['keyboard']['cashbackAqayePardakht']]],
@@ -249,6 +259,7 @@ $stmt->bindValue(':user_id', $from_id);
 $stmt->execute();
 $paymentexits = $stmt->rowCount();
 $zarinpal = getPaySettingValue("zarinpalstatus");
+$sep = getPaySettingValue("sepstatus");
 $affilnecurrency = getPaySettingValue("digistatus");
 $arzireyali3 = getPaySettingValue("statusiranpay3");
 $paymentstatussnotverify = getPaySettingValue("paymentstatussnotverify");
@@ -308,6 +319,11 @@ if ($PaySettingaqayepardakht == "onaqayepardakht") {
 if ($zarinpal == "onzarinpal") {
     $step_payment['inline_keyboard'][] = [
         ['text' => $textbotlang['textbot']['zarinPal'], 'callback_data' => "zarinpal"]
+    ];
+}
+if ($sep == "onsep") {
+    $step_payment['inline_keyboard'][] = [
+        ['text' => '💳 درگاه بانکی', 'callback_data' => "sep"]
     ];
 }
 if ($paymentstatussnotverify == "onverifypay") {

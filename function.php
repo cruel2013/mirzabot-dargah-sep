@@ -4,6 +4,9 @@ require 'config.php';
 require 'vendor/autoload.php';
 ini_set('error_log', 'error_log');
 
+require_once 'payment/sep_gateway.php';
+initSepDatabase($pdo);
+
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
