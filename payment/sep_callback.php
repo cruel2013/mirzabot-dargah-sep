@@ -8,6 +8,8 @@ require_once __DIR__ . '/../function.php';
 require_once __DIR__ . '/../keyboard.php';
 require_once __DIR__ . '/../panels.php';
 
+$ManagePanel = new ManagePanel();
+
 $status = isset($_GET['status']) ? $_GET['status'] : '';
 $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : '';
 $ref_id = isset($_GET['ref_id']) ? $_GET['ref_id'] : '';
